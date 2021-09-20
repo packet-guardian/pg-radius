@@ -1,0 +1,24 @@
+[server]
+port = 9000
+
+[packet-guardian]
+address = "https://pg.example.com"
+username = ""
+password = ""
+
+[wlans.Network1]
+radius_attribute = "airespace-interface-name"
+
+[[wlans.Network1.conditions]]
+if = "NAS-IP-Address" # Attribute to check
+innet = "10.1.1.0/24" # Check if attribute is in a subnet
+thenok = "campus-lan" # If condition is true, return this for registered clients
+thenreject = "campus-lan-onboard" # Or this for unregistered clients
+
+[wlans.Network2]
+radius_attribute = "airespace-interface-name"
+
+[[wlans.Network2.conditions]]
+# No if so this condition always passes
+thenok = "building1-lan" # Return this for registered clients
+thenreject = "building1-lan-onboard" # Or this for unregistered clients

@@ -1,0 +1,6 @@
+private/
+bin/
+.vscode/
+vendor/
+node_modules/
+config.toml
